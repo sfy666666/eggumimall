@@ -1,5 +1,5 @@
 import styles from './index.less';
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import {request} from 'umi';
 
 interface Product {
@@ -11,12 +11,12 @@ interface Product {
 
 export default function IndexPage() {
   const [products, setProducts] = useState<Product[]>([
-    { id: 1, name: '苹果', price: 4999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
-    { id: 1, name: '小米', price: 3999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
-    { id: 1, name: '华为', price: 7999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
-    { id: 1, name: '三星', price: 8999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
-    { id: 1, name: '一加', price: 4399, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
-    { id: 1, name: '锤子', price: 2999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
+    // { id: 1, name: '苹果', price: 4999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
+    // { id: 1, name: '小米', price: 3999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
+    // { id: 1, name: '华为', price: 7999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
+    // { id: 1, name: '三星', price: 8999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
+    // { id: 1, name: '一加', price: 4399, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
+    // { id: 1, name: '锤子', price: 2999, imgurl: 'https://img10.360buyimg.com/n1/s450x450_jfs/t1/168290/10/7108/204224/6030d358E68bde6a5/dc8c9597a09d84d0.jpg' },
   ]);
 
   const fetchProductList =async (keyword: string='')=>{
@@ -30,11 +30,24 @@ export default function IndexPage() {
     fetchProductList();
   },[]);//添加空数组防止死循环
 
+  const [keyword,setKeyWord]=useState<string>('');
+
+  //输入内容监听
+  const searchInputChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
+    const txt=e.target.value;
+    setKeyWord(txt);
+  }
+  
+  //搜索按钮监听
+  const searchButtonClickHandler=()=>{
+    fetchProductList(keyword);
+  };
+
   return (
     <div>
       <div className={styles.searchBar}>
-        <input className={styles.searchInput}></input>
-        <button className={styles.searchButton}>搜索</button>
+        <input className={styles.searchInput} onChange={searchInputChangeHandler}></input>
+        <button className={styles.searchButton} onClick={searchButtonClickHandler}>搜索</button>
       </div>
 
       <div className={styles.productList}>
