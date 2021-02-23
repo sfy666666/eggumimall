@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80023
 File Encoding         : 65001
 
-Date: 2021-02-23 09:49:23
+Date: 2021-02-23 18:34:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `product` (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('1', '荣耀Play4T Pro', '1768.00', 'https://img14.360buyimg.com/n0/jfs/t1/151368/14/19888/133860/602dd8f7Ed666edb4/f909a4d1e7b66553.jpg');
+INSERT INTO `product` VALUES ('1', '荣耀Play4T Pro/荣耀play4tpro 全网通手机【华为麒麟810芯片】 冰岛幻境 8+128GB【碎屏险套装】', '1768.00', 'https://img14.360buyimg.com/n0/jfs/t1/151368/14/19888/133860/602dd8f7Ed666edb4/f909a4d1e7b66553.jpg');
 INSERT INTO `product` VALUES ('2', '华为Mate Xs 5g折叠屏手机', '21599.00', 'https://img14.360buyimg.com/n0/jfs/t1/152562/20/17129/118615/601792c1E9a3c52ec/3723dc9f475e8e4d.jpg');
 INSERT INTO `product` VALUES ('3', 'iPhone 11(A2223) 128GB', '4899.00', 'https://img14.360buyimg.com/n0/jfs/t1/148767/39/18017/86358/5fd32ff0E5ca41721/d885f7c401dfa557.jpg');
 INSERT INTO `product` VALUES ('4', 'iPhone 11 Pro Max(A2220) 256GB', '10099.00', 'https://img14.360buyimg.com/n0/jfs/t1/122505/19/15070/68848/5f861494Ebe330db5/24bc162f493ec940.jpg');
@@ -52,3 +52,20 @@ INSERT INTO `product` VALUES ('19', ' \r\n中兴ZTE 天机Axon 20 屏下摄像 6
 INSERT INTO `product` VALUES ('20', ' \r\n酷派（Coolpad）BOS-AO128G指纹一体大内存全网通4G安卓手机学生高性价', '729.00', 'https://img14.360buyimg.com/n0/jfs/t1/133653/17/9531/89398/5f5c2810Eb4051b88/31eb8b042830fdaf.jpg');
 INSERT INTO `product` VALUES ('21', '联想拯救者电竞手机Pro 12GB+256GB 骁龙865 Plus 双液冷散热 144Hz电竞屏 ', '3699.00', 'https://img14.360buyimg.com/n0/jfs/t1/149177/15/3457/117920/5f16cf3dEe0375d2a/41b1855a5ad94923.jpg');
 INSERT INTO `product` VALUES ('22', ' \r\n华为 HUAWEI Mate X2 麒麟9000旗舰芯片 无缝鹰翼折叠 超感知徕卡四摄支持100倍', '17999.00', 'https://img14.360buyimg.com/n0/jfs/t1/167718/22/7174/64869/6033a353Ea278fab2/5d7ab7aec78f6d1f.jpg');
+
+-- ----------------------------
+-- Table structure for product_info
+-- ----------------------------
+DROP TABLE IF EXISTS `product_info`;
+CREATE TABLE `product_info` (
+  `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `color` varchar(255) NOT NULL,
+  `version` varchar(255) NOT NULL,
+  `sub_title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of product_info
+-- ----------------------------
+INSERT INTO `product_info` VALUES ('0000000001', '冰岛幻境,幻夜黑,蓝水翡翠', '6+128G,8+128G', '【当天发货】买就送：壳膜+运费险+碎屏险+一年质保。4800万高感光夜拍三摄，光学屏幕指纹，OLED珍珠屏！4T点此');
