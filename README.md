@@ -370,4 +370,30 @@ const searchButtonClickHandler=()=>{
 
 ```
 
+### TIPS
+#### 1.配置umi环境变量
+获取umi的安装路径
+
+```
+yarn global bin
+```
+
+我的路径是D:\nodejs\node_global\bin         
+将D:\nodejs\node_global\bin添加到系统环境变量中         
+#### 2.执行umi、server、now、create-umi-app等命令时提示文件名、目录名或卷标语法不正确
+通过yarn global bin命令找到umi.cmd的路径，我的路径是D:\nodejs\node_global\bin,
+在bin目录中找到umi.cmd用EditPlus或NotePad打开（记事本打开也可以），内容如下
+```
+@"%~dp0\C:\Users\Administrator\AppData\Local\Yarn\Data\global\node_modules\.bin\umi.cmd"   %*
+```
+将C盘符前的6个字符删掉
+```
+@"C:\Users\Administrator\AppData\Local\Yarn\Data\global\node_modules\.bin\umi.cmd"   %*
+```
+重启命令行，最好用管理员身份运行，不然有时候会提示umi不是内部或外部命令，如果一直提示不是内部或外部命令需要配置umi环境变量。
+
+
+
+
+
 
