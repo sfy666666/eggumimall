@@ -1,6 +1,10 @@
 import styles from './index.less';
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Button ,Input} from 'antd';
+import "antd/dist/antd.css";
 import {request} from 'umi';
+import {history} from 'umi';
+import url from '*.svg';
 
 interface Product {
   id: number;
@@ -43,18 +47,28 @@ export default function IndexPage() {
     fetchProductList(keyword);
   };
 
+  const onItemClick=(event: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
+    const index =event.currentTarget.dataset.index;
+    console.log('event',event);
+    if(index){
+      console.log("点击了",products[Number.parseInt(index)].name);
+      history.push('/productInfo?id='+products[Number.parseInt(index)].id);
+    }
+  };
+
   return (
     <div>
+       <h1 className={styles.title}>Jingdong Mall</h1>
       <div className={styles.searchBar}>
-        <input className={styles.searchInput} onChange={searchInputChangeHandler}></input>
-        <button className={styles.searchButton} onClick={searchButtonClickHandler}>搜索</button>
+        <Input className={styles.searchInput} onChange={searchInputChangeHandler}></Input>
+        <Button  className={styles.searchButton} onClick={searchButtonClickHandler} >搜索</Button>
       </div>
 
       <div className={styles.productList}>
         {
-          products.map(product => {
+          products.map((product,index )=> {
             return (
-              <div className={styles.productItem} key={product.id}>
+              <div className={styles.productItem} key={product.id} onClick={onItemClick} data-index={index}>
                 <img className={styles.productImage} src={product.imgurl} alt="" width="100" height="150"></img>
                 <div className={styles.productInfo}>
                   <div className={styles.productTitle}>{product.name}</div>
