@@ -394,6 +394,9 @@ yarn global bin
 
 
 
+##### 参考资料  [一个非常非常简单的Umi + TypeScript + Egg.js的简易列表例子](https://www.bilibili.com/video/BV1D5411a7bb) 
+##### 鸣谢 up主[一斤代码](https://space.bilibili.com/330392743)
+
 
 
 
