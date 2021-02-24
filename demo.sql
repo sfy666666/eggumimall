@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80023
 File Encoding         : 65001
 
-Date: 2021-02-23 18:34:51
+Date: 2021-02-24 18:26:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,10 +31,10 @@ CREATE TABLE `product` (
 -- Records of product
 -- ----------------------------
 INSERT INTO `product` VALUES ('1', '荣耀Play4T Pro/荣耀play4tpro 全网通手机【华为麒麟810芯片】 冰岛幻境 8+128GB【碎屏险套装】', '1768.00', 'https://img14.360buyimg.com/n0/jfs/t1/151368/14/19888/133860/602dd8f7Ed666edb4/f909a4d1e7b66553.jpg');
-INSERT INTO `product` VALUES ('2', '华为Mate Xs 5g折叠屏手机', '21599.00', 'https://img14.360buyimg.com/n0/jfs/t1/152562/20/17129/118615/601792c1E9a3c52ec/3723dc9f475e8e4d.jpg');
-INSERT INTO `product` VALUES ('3', 'iPhone 11(A2223) 128GB', '4899.00', 'https://img14.360buyimg.com/n0/jfs/t1/148767/39/18017/86358/5fd32ff0E5ca41721/d885f7c401dfa557.jpg');
-INSERT INTO `product` VALUES ('4', 'iPhone 11 Pro Max(A2220) 256GB', '10099.00', 'https://img14.360buyimg.com/n0/jfs/t1/122505/19/15070/68848/5f861494Ebe330db5/24bc162f493ec940.jpg');
-INSERT INTO `product` VALUES ('5', 'Redmi k30i 5G双模 骁龙765G', '2399.00', 'https://img14.360buyimg.com/n0/jfs/t1/171377/30/5385/146345/60191193E5957688e/0d73e7a521cf85f1.jpg');
+INSERT INTO `product` VALUES ('2', '华为Mate Xs 5G折叠屏手机麒麟990 SoC旗舰芯片 8英寸可折叠全面屏 全网通 星际蓝(8GB+512GB)官方标配', '21599.00', 'https://img14.360buyimg.com/n0/jfs/t1/152562/20/17129/118615/601792c1E9a3c52ec/3723dc9f475e8e4d.jpg');
+INSERT INTO `product` VALUES ('3', 'Apple iPhone 11 (A2223) 128GB 黑色 移动联通电信4G手机 双卡双待', '4899.00', 'https://img14.360buyimg.com/n0/jfs/t1/148767/39/18017/86358/5fd32ff0E5ca41721/d885f7c401dfa557.jpg');
+INSERT INTO `product` VALUES ('4', 'Apple iPhone 11 Pro Max (A2220) 256GB 深空灰色 移动联通电信4G手机 双卡双待', '10099.00', 'https://img14.360buyimg.com/n0/jfs/t1/122505/19/15070/68848/5f861494Ebe330db5/24bc162f493ec940.jpg');
+INSERT INTO `product` VALUES ('5', 'Redmi K30i 5G双模 120Hz流速屏 骁龙765G 前置挖孔双摄 4800万后置四摄 30W快充 8GB+128GB 深海微光 游戏智能手机 小米 红米', '2399.00', 'https://img14.360buyimg.com/n0/jfs/t1/171377/30/5385/146345/60191193E5957688e/0d73e7a521cf85f1.jpg');
 INSERT INTO `product` VALUES ('6', '小米 (MI) 红米note8 NOTE8', '1169.00', 'https://img14.360buyimg.com/n0/jfs/t1/159106/30/3408/230309/60013f7eEfb88c976/7149cf5695a79684.jpg');
 INSERT INTO `product` VALUES ('7', '华为P40 Pro+ 5G手机（12期免息可选）全网通 陶瓷黑 8GB+256GB', '7958.00', 'https://img14.360buyimg.com/n0/jfs/t1/140722/30/280/43012/5edf2dd9E4453c6c4/f28523fe8b671c9b.jpg');
 INSERT INTO `product` VALUES ('8', 'Apple iPhone 12 Pro Max (A2412) 256GB', '10099.00', 'https://img14.360buyimg.com/n0/jfs/t1/122505/19/15070/68848/5f861494Ebe330db5/24bc162f493ec940.jpg');
@@ -58,14 +58,19 @@ INSERT INTO `product` VALUES ('22', ' \r\n华为 HUAWEI Mate X2 麒麟9000旗舰
 -- ----------------------------
 DROP TABLE IF EXISTS `product_info`;
 CREATE TABLE `product_info` (
-  `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `color` varchar(255) NOT NULL,
   `version` varchar(255) NOT NULL,
   `sub_title` varchar(255) NOT NULL,
+  `href` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_info
 -- ----------------------------
-INSERT INTO `product_info` VALUES ('0000000001', '冰岛幻境,幻夜黑,蓝水翡翠', '6+128G,8+128G', '【当天发货】买就送：壳膜+运费险+碎屏险+一年质保。4800万高感光夜拍三摄，光学屏幕指纹，OLED珍珠屏！4T点此');
+INSERT INTO `product_info` VALUES ('1', '冰岛幻境,幻夜黑,蓝水翡翠', '6+128G,8+128G', '【当天发货】买就送：壳膜+运费险+碎屏险+一年质保。4800万高感光夜拍三摄，光学屏幕指纹，OLED珍珠屏！4T点此', 'https://item.jd.com/60076267212.html');
+INSERT INTO `product_info` VALUES ('2', '星际蓝', '8+512G', '赠.【雨林古树红茶】开增票普票【支持京尊达】原厂正品/全国联保/有质量问题/开箱损/可去当地售后换/修..', '');
+INSERT INTO `product_info` VALUES ('3', '黑色,白色,红色,黄色,紫色,绿色', '64GB,128GB,256GB', '【公开版到手价4899元!】选购iPhone11ProMax，仅加2000元得6.5英寸超大显示屏手机！点击抢购！', 'https://item.jd.com/100004770237.html');
+INSERT INTO `product_info` VALUES ('4', '海蓝色,金色,石墨色,银色', '64GB,128GB,256GB', '【iPhone的巅峰之作！】推荐选购【值享焕新版】！含2年官方延保AC+，未来购下代iPhone至高返6997元!更多优惠', 'https://pro.jd.com/mall/active/3vhrJRWUDvx84MMSPJ2gnMuggew3/index.html');
+INSERT INTO `product_info` VALUES ('5', '紫域幻境,深海微光,时光独白,薄荷冰蓝', '6GB+128GB,8GB+128GB,8GB+256GB', '【小米直供|现货速发】下单赠：【品牌音乐耳机】【晒单红包】新款K30至尊热销中！', 'https://item.jd.com/72002902268.html#crumb-wrap');

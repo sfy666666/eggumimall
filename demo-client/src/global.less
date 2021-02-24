@@ -1,0 +1,75 @@
+//   Umi 中约定 src/global.css 为全局样式，如果存在此文件，会被自动引入到入口文件最前面。把后缀换成 .less 同样适用。
+page {
+  background: #f5f6f8;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  font-family: MicrosoftYaHei, PingFangSC-Regular;
+  color: #666666;
+  line-height: 37rpx;
+}
+
+.c_flex {
+  display: flex;
+  align-items: center;
+}
+
+.c_flex_colum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c_flex_colum_space {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: center;
+}
+
+.c_flex_row {
+  display: flex;
+  justify-content: center;
+}
+
+.c_flex_space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c_flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c_flex_baseline {
+  display: flex;
+  align-items: baseline;
+}
+
+.c_flex_top {
+  display: flex;
+  align-items: start;
+}
+
+.bottom_container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  bottom: 48rpx;
+}
+
+.bottom_btn {
+  line-height: 72rpx;
+  text-align: center;
+  font-size: 28rpx;
+  width: 496rpx;
+  height: 72rpx;
+  color: white;
+  background: linear-gradient(90deg, #38bdfd, #1a88f9);
+  border-radius: 44rpx;
+  box-shadow: 0px 6rpx 20rpx 0px rgba(0, 0, 0, 0.10);
+}

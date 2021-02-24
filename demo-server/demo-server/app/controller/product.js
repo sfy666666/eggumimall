@@ -30,7 +30,7 @@ class ProductController extends Controller{
             ctx.body=JSON.stringify({
                 code:1,
                 msg:'failed',
-                data:{}
+                data:null
             });
         }
         

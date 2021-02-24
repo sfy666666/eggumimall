@@ -61,7 +61,7 @@ export default function IndexPage() {
        <h1 className={styles.title}>Jingdong Mall</h1>
       <div className={styles.searchBar}>
         <Input className={styles.searchInput} onChange={searchInputChangeHandler}></Input>
-        <Button  className={styles.searchButton} onClick={searchButtonClickHandler} >搜索</Button>
+        <Button type='primary' className={styles.searchButton} onClick={searchButtonClickHandler} >搜索</Button>
       </div>
 
       <div className={styles.productList}>
