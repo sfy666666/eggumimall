@@ -14,36 +14,16 @@ interface ProductInfo {
   sub_title: string;
   href: string;
 };
-//声明颜色
-interface ColorData {
-  name: string;
-}
-//声明版本
-interface VersionData {
-  name: string;
-}
-
-//声明颜色选中变量
-interface Data {
-  selected: string;
-};
-
-//声明版本选中变量
-interface Version {
-  selected: string;
-}
 
 export default function Page(props: any) {
   //使用React的State方便修改变量
   const [productInfo, setProductInfo] = useState<ProductInfo>();
-  const [data, setData] = useState<Data>();
-  const [version, setVersion] = useState<Version>();
+  const [colorSelected, setColorSelected] = useState<string>();
+  const [versionSelected, setVersionSelected] = useState<string>();
   //颜色数组
-  const [colorData, setColorData] = useState<ColorData[]>();
+  const [colorData, setColorData] = useState<string[]>();
   //版本数组
-  const [versionData, setVersionData] = useState<VersionData[]>();
-
-
+  const [versionData, setVersionData] = useState<string[]>();
   //获取商品详情数据
   const fetchProductInfo = async (id: Number = 1) => {
     //请求eggjs后台获取数据 在umirc.ts中proxy配置了baseUrl
@@ -53,20 +33,15 @@ export default function Page(props: any) {
     setProductInfo(result.data);
     console.log('color====', result.data.color.split(','));
     //颜色数组赋值
-    let colors: ColorData[] = [];
+    let colors: string[] = [];
     result.data.color.split(',').forEach((element: string) => {
-      colors.push({
-        name: element
-      });
+      colors.push(element);
     });
     setColorData(colors);
-
     //版本数组赋值
-    let versions: VersionData[] = [];
+    let versions: string[] = [];
     result.data.version.split(',').forEach((element: string) => {
-      versions.push({
-        name: element
-      });
+      versions.push(element);
     });
     setVersionData(versions);
     console.log('colors', colors);
@@ -74,35 +49,23 @@ export default function Page(props: any) {
 
   //选择按钮
   const selectedHandle = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log('点击前的data==', data?.selected);
+    console.log('点击前的data==', colorSelected);
     const index = event.currentTarget.dataset.index;
-    if (Boolean(data) && Boolean(data?.selected !== undefined)) {
-      setData({
-        selected: index
-      });
-      console.log('index====', index);
-      console.log('点击后的data==', data?.selected);
-    }
+    setColorSelected(index);
+    console.log('index====', index);
+    console.log('点击后的data==', colorSelected);
 
   };
 
   const selectedVersionHandle = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const index = event.currentTarget.dataset.index;
-    if (Boolean(version) && Boolean(version?.selected !== undefined)) {
-      setVersion({
-        selected: index
-      });
-    }
+    setVersionSelected(index);
   };
 
   useEffect(() => {
     //变量初始化
-    setData({
-      selected: '0'
-    });
-    setVersion({
-      selected: '0'
-    });
+    setColorSelected('0');
+    setVersionSelected('0');
     //获取上个页面的传参
     const id = props.location.query.id;
     console.log('props', props);
@@ -126,7 +89,7 @@ export default function Page(props: any) {
 
             <div className={styles.bc_243}>
               <div className={styles.jdPrice}>
-                <div className={styles.c_flex_baseline}> 
+                <div className={styles.c_flex_baseline}>
                   <div>京 东 价</div>
                   <span className={styles.price_rmb}>￥</span>
                   <span className={styles.price_number}>{productInfo?.price}</span>
@@ -139,28 +102,25 @@ export default function Page(props: any) {
             <div className={styles.c_flex} >
               <div className={styles.item_text} style={{ color: '#999999' }}>选择颜色</div>
               {
-                colorData?.map((element: ColorData, index: any) => {
+                colorData?.map((element: string, index: any) => {
                   return (
-                    <div className={data?.selected == index ? styles.item_selected : styles.item} data-index={index} onClick={selectedHandle}>
+                    <div className={colorSelected == index ? styles.item_selected : styles.item} data-index={index} onClick={selectedHandle}>
                       <a href="#none">
-                        <img data-img="1" src="//img11.360buyimg.com/n9/s40x40_jfs/t1/151368/14/19888/133860/602dd8f7Ed666edb4/f909a4d1e7b66553.jpg" width="40" height="40" alt={element.name} />
-                        <text className={styles.item_text} >{element.name}</text>
+                        <img data-img="1" src="//img11.360buyimg.com/n9/s40x40_jfs/t1/151368/14/19888/133860/602dd8f7Ed666edb4/f909a4d1e7b66553.jpg" width="40" height="40" alt={element} />
+                        <text className={styles.item_text} >{element}</text>
                       </a>
                     </div>
                   )
                 })
               }
             </div>
-            <div className={styles.c_flex} >
+            <div className={`${styles.c_flex} ${styles.flex_wrap}`} >
               <div className={styles.item_text} style={{ color: '#999999' }}>选择版本</div>
               {
-                versionData?.map((element: VersionData, index: any) => {
+                versionData?.map((element: string, index: any) => {
                   return (
-                    <div className={version?.selected == index ? styles.item_selected : styles.item} data-index={index} onClick={selectedVersionHandle}>
-                      <a href="#none">
-                        <img data-img="1" src="//img11.360buyimg.com/n9/s40x40_jfs/t1/151368/14/19888/133860/602dd8f7Ed666edb4/f909a4d1e7b66553.jpg" width="40" height="40" alt={element.name} />
-                        <text className={styles.item_text} >{element.name}</text>
-                      </a>
+                    <div className={versionSelected == index ? styles.item_version_selected : styles.item_version} data-index={index} onClick={selectedVersionHandle}>
+                      {element}
                     </div>
                   )
                 })
